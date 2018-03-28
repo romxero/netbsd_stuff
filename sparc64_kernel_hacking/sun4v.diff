@@ -1,0 +1,35 @@
+Index: distrib/sparc64/xminiroot/Makefile
+===================================================================
+RCS file: /cvsroot/src/distrib/sparc64/xminiroot/Makefile,v
+retrieving revision 1.34
+diff -u -r1.34 Makefile
+--- distrib/sparc64/xminiroot/Makefile	17 Jul 2017 14:36:13 -0000	1.34
++++ distrib/sparc64/xminiroot/Makefile	4 Mar 2018 19:31:44 -0000
+@@ -30,7 +30,9 @@
+ 	cp -p ${CRUNCHBINDIR}/sysinst/sysinstmsgs.* sysinst
+ 	cp ${.ALLSRC} ${.TARGET}
+ 
+-netbsd.gz: ${KERNOBJDIR}/GENERIC/netbsd
++#netbsd.gz: ${KERNOBJDIR}/GENERIC/netbsd
++#netbsd.gz: ${KERNOBJDIR}/GENERIC.DEBUG/netbsd
++netbsd.gz: /home/palle/data/netbsd/palle-sparc64-sun4v/build/sparc64/objdir/distrib/sparc64/instfs/netbsd-INSTALL
+ 	-rm -f ${.TARGET}
+ 	${TOOL_GZIP_N} -9c ${.ALLSRC} > ${.TARGET}
+ 
+Index: sys/arch/sparc64/conf/INSTALL
+===================================================================
+RCS file: /cvsroot/src/sys/arch/sparc64/conf/INSTALL,v
+retrieving revision 1.30
+diff -u -r1.30 INSTALL
+--- sys/arch/sparc64/conf/INSTALL	25 May 2016 20:00:50 -0000	1.30
++++ sys/arch/sparc64/conf/INSTALL	4 Mar 2018 19:31:56 -0000
+@@ -4,7 +4,8 @@
+ #	kernel, that are not already included in GENERIC!
+ #	See the include below...
+ 
+-include 	"arch/sparc64/conf/GENERIC"
++#include 	"arch/sparc64/conf/GENERIC"
++include 	"arch/sparc64/conf/GENERIC.DEBUG"
+ 
+ #ident		"INSTALL-$Revision: 1.30 $"
+ 

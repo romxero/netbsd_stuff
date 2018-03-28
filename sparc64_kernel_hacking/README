@@ -1,0 +1,33 @@
+Instruction for building and running:
+
+I have my local netbsd tree in /home/palle/data/netbsd/palle-sparc64-sun4v/src
+
+I have picked (hopefully) the relevant patches and put them in the sun4v.diff file.
+
+cd /home/palle/data/netbsd/palle-sparc64-sun4v/src/distrib/sparc64
+
+/home/palle/scripts/build_netbsd_sun4v.sh
+
+/home/palle/data/netbsd/palle-sparc64-sun4v/build/sparc64/tooldir/bin/nbmake-sparc64 all install
+
+cp /home/palle/data/netbsd/palle-sparc64-sun4v/build/sparc64/objdir/distrib/sparc64/xminiroot/miniroot.fs /home/palle/data/opensparc/S10image/disk.s10hw2 
+
+
+
+
+I have a copy of the opensparc distribution in /home/palle/data/opensparc
+
+
+
+
+I am using qemu as emulator, located in /home/palle/data/qemu/qemu
+
+cd /home/palle/data/qemu/qemu
+
+sparc64-softmmu/qemu-system-sparc64 -M niagara -L /home/palle/data/opensparc/S10image -nographic -m 256 -drive if=pflash,readonly=on,file=/home/palle/data/opensparc/S10image/disk.s10hw2
+
+
+
+
+
+
